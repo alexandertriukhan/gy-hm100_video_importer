@@ -1,6 +1,6 @@
 # JVC GY-HM100 Video Importer
 
-A Python script to import video clips from a JVC GY-HM100 camera SD card, parse metadata, and encode videos to widely compatible H.264 + AAC MP4 files with optional audio normalization.
+A Python script to import video clips from a JVC GY-HM100 camera SD card, parse metadata, and encode videos to widely compatible H.264 + AAC MP4 files with optional vhs-like dynamic timestamp.
 
 ## Features
 
