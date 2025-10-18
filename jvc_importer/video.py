@@ -21,7 +21,7 @@ def build_vhs_datestamp_filter(creation_time: datetime) -> str:
     # Date on top
     drawtext_date = (
         f"drawtext=fontfile='{VHS_FONT_PATH}':"
-        f"text='%{{pts\\:gmtime\\:{start_ts}\\:%d %m %Y}}':"
+        f"text='%{{pts\\:localtime\\:{start_ts}\\:%d %m %Y}}':"
         f"x=w-tw-10:"          # right-aligned
         f"y=h-th-10-{VHS_FONT_SIZE}:"  # slightly above bottom to leave room for time
         f"fontsize={VHS_FONT_SIZE}:"
@@ -31,7 +31,7 @@ def build_vhs_datestamp_filter(creation_time: datetime) -> str:
     # Time below date
     drawtext_time = (
         f"drawtext=fontfile='{VHS_FONT_PATH}':"
-        f"text='%{{pts\\:gmtime\\:{start_ts}\\:%H\\\\\:%M\\\\\:%S}}':"
+        f"text='%{{pts\\:localtime\\:{start_ts}\\:%H\\\\\:%M\\\\\:%S}}':"
         f"x=w-tw-10:"          # same right-alignment
         f"y=h-th-10:"          # bottom of video
         f"fontsize={VHS_FONT_SIZE}:"
@@ -81,8 +81,10 @@ def build_ffmpeg_command(
         "-crf", str(preset['crf']),
         "-c:a", FFMPEG_AUDIO_CODEC,
         "-b:a", FFMPEG_AUDIO_BITRATE,
-        "-force_key_frames", "expr:gte(t,n_forced*0)",  # keyframe at start
-        "-movflags", "+faststart",
+        # "-force_key_frames", "expr:gte(t,n_forced*0)",  # keyframe at start
+        # TODO: this didn with lag in the begining of the video 
+        # need futher investigation
+        # "-movflags", "+faststart",
         "-progress", "pipe:1",
         str(output_path)
     ]

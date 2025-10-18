@@ -38,7 +38,8 @@ def extract_creation_date(meta_xml_path: Path) -> datetime | None:
         value = creation_date_elem.attrib.get("value")
         if value:
             # Example: 2025-10-17T10:38:39-05:00
-            return datetime.fromisoformat(value)
+            iso_naive = value[:-6]
+            return datetime.fromisoformat(iso_naive)
     return None
 
 
