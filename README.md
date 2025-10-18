@@ -9,12 +9,10 @@ A Python script to import video clips from a JVC GY-HM100 camera SD card, parse 
   - Run from SD card root with no parameters.
   - Pass `--source` to specify SD card path manually.
 - Encodes video to H.264 + AAC MP4 with configurable quality presets.
-- Optional audio normalization (`--no-normalize-audio` to disable).
 - Automatic creation of output folder if it doesn’t exist.
 - Progress bar showing encoding progress for each clip.
 - Handles multiple clips in a single run.
-- Fast playback enabled using `-movflags +faststart`.
-- First-frame lag minimized and deinterlacing applied automatically if needed.
+- Oprional dynamic real VHS-like timestamp
 
 ## Installation
 
